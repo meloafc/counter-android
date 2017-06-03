@@ -1,3 +1,5 @@
 <resources>
     <string name="app_name">Counter</string>
+    <string name="iniciar_contagem">iniciar contagem</string>
+    <string name="parar_contagem">parar contagem</string>
 </resources>
