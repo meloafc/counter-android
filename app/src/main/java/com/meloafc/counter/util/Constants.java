@@ -7,5 +7,7 @@ package com.meloafc.counter.util;
 public class Constants {
 
     public static final String DEV = "dev";
-    public static final String FIREBASE_CHILD_EVENTOS = "eventos";
+    public static final String FIREBASE_CHILD_EVENTOS = "events";
+    public static final String FIREBASE_CHILD_RESUMO_DIARIO = "daily_summary";
+    public static final String FIREBASE_CHILD_TOTAL = "total";
 }

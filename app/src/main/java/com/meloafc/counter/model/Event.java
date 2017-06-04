@@ -7,40 +7,40 @@ import com.google.firebase.database.IgnoreExtraProperties;
  */
 
 @IgnoreExtraProperties
-public class Evento {
+public class Event {
 
     public enum Type {
         ACTION_SCREEN_ON("ACTION_SCREEN_ON"),
         ACTION_SCREEN_OFF("ACTION_SCREEN_OFF");
 
-        private String type;
+        private String name;
 
-        Type(String url) {
-            this.type = type;
+        Type(String name) {
+            this.name = name;
         }
 
-        public String getType() {
-            return type;
+        public String getName() {
+            return name;
         }
     }
 
-    public long data;
-    public Type type;
+    private long date;
+    private Type type;
 
-    public Evento() {
+    public Event() {
     }
 
-    public Evento(long data, Type type) {
-        this.data = data;
+    public Event(long date, Type type) {
+        this.date = date;
         this.type = type;
     }
 
-    public long getData() {
-        return data;
+    public long getDate() {
+        return date;
     }
 
-    public void setData(long data) {
-        this.data = data;
+    public void setDate(long date) {
+        this.date = date;
     }
 
     public Type getType() {
