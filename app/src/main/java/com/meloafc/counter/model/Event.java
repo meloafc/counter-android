@@ -1,5 +1,6 @@
 package com.meloafc.counter.model;
 
+import com.google.firebase.database.Exclude;
 import com.google.firebase.database.IgnoreExtraProperties;
 
 /**
@@ -9,45 +10,67 @@ import com.google.firebase.database.IgnoreExtraProperties;
 @IgnoreExtraProperties
 public class Event {
 
-    public enum Type {
-        ACTION_SCREEN_ON("ACTION_SCREEN_ON"),
-        ACTION_SCREEN_OFF("ACTION_SCREEN_OFF");
-
-        private String name;
-
-        Type(String name) {
-            this.name = name;
-        }
-
-        public String getName() {
-            return name;
-        }
-    }
-
-    private long date;
-    private Type type;
+    private Long initialDate;
+    private Long finalDate;
+    private Long duration;
 
     public Event() {
     }
 
-    public Event(long date, Type type) {
-        this.date = date;
-        this.type = type;
+    public Event(Long initialDate) {
+        this.initialDate = initialDate;
     }
 
-    public long getDate() {
-        return date;
+    public Event(Long initialDate, Long finalDate) {
+        this.initialDate = initialDate;
+        this.finalDate = finalDate;
+        calculateDuration();
     }
 
-    public void setDate(long date) {
-        this.date = date;
+    public void calculateDuration() {
+        if(initialDate != null && finalDate != null) {
+            this.duration = finalDate - initialDate;
+        }
     }
 
-    public Type getType() {
-        return type;
+    @Exclude
+    public boolean isValid() {
+        if(initialDate == null) {
+            return false;
+        }
+
+        if(finalDate == null) {
+            return false;
+        }
+
+        if(duration == null || duration < 0L) {
+            return false;
+        }
+
+        return true;
     }
 
-    public void setType(Type type) {
-        this.type = type;
+    public Long getInitialDate() {
+        return initialDate;
+    }
+
+    public void setInitialDate(Long initialDate) {
+        this.initialDate = initialDate;
+    }
+
+    public Long getFinalDate() {
+        return finalDate;
+    }
+
+    public void setFinalDate(Long finalDate) {
+        this.finalDate = finalDate;
+    }
+
+    public Long getDuration() {
+        return duration;
+    }
+
+    public void setDuration(Long duration) {
+        this.duration = duration;
     }
 }
